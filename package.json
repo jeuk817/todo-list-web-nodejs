@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-todo-web",
+  "version": "1.0.0",
+  "description": "Todo List application web version without express and database",
+  "main": "bin.js",
+  "scripts": {
+    "start": "node bin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeuk817/nodejs-todo-web.git"
+  },
+  "keywords": [
+    "Todo",
+    "List"
+  ],
+  "author": "circus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeuk817/nodejs-todo-web/issues"
+  },
+  "homepage": "https://github.com/jeuk817/nodejs-todo-web#readme",
+  "engines": {
+    "node": "v10.15.3",
+    "npm": "6.4.1"
+  }
+}
