@@ -84,25 +84,28 @@ class DynamicEvent {
     }
 
     setMemoEvent() {
-        document.querySelector(".memoNote").addEventListener("keydown", async (e) => {
-            if (e.keyCode === 13) {
-                var text = e.target.value;
-                if (text.length === 0) {
-                    const text = '스케줄을 입력해 주세요.';
-                    this.showNote(text, 1500);
-                } else {
-                    const statusAndText = 'status=' + e.target.parentNode.id + '&text=' + text;
-                    const response = await fetch('/createSchedule', {
-                        method: 'POST',
-                        body: statusAndText
-                    });
-                    const data = '<p class="schedule" draggable="true">' + text + '</p>';
-                    this.insertElement({ target: e.target, index: 'afterend', data });
-                    e.target.parentNode.removeChild(e.target);
-                    this.updateSchedule();
+        const memoNote = document.querySelectorAll(".memoNote");
+        memoNote.forEach(text =>{
+            text.addEventListener("keydown", async (e) => {
+                if (e.keyCode === 13) {
+                    var text = e.target.value;
+                    if (text.length === 0) {
+                        const text = '스케줄을 입력해 주세요.';
+                        this.showNote(text, 1500);
+                    } else {
+                        const statusAndText = 'status=' + e.target.parentNode.id + '&text=' + text;
+                        const response = await fetch('/createSchedule', {
+                            method: 'POST',
+                            body: statusAndText
+                        });
+                        const data = '<p class="schedule" draggable="true">' + text + '</p>';
+                        this.insertElement({ target: e.target, index: 'afterend', data });
+                        e.target.parentNode.removeChild(e.target);
+                        this.updateSchedule();
+                    }
                 }
-            }
-        });
+            });
+        })
     }
 
     holdLoginWindow() {
